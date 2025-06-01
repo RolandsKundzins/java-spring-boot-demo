@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot
+  template:
+    metadata:
+      labels:
+        app: springboot
+    spec:
+      containers:
+        - name: springboot
+          image: 730335424335.dkr.ecr.eu-north-1.amazonaws.com/my-spring-boot-app:latest
+          #          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+#          env:
+#            - name: DB_HOST
+#              value: "postgres-service"  # Use the PostgreSQL service name
+#            - name: DB_PORT
+#              value: "5432"
+#            - name: DB_NAME
+#              value: "demo_db"
+#            - name: DB_USER
+#              value: "postgres"
+#            - name: DB_PASSWORD
+#              value: "admin"
